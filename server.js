@@ -26,14 +26,32 @@ app.get('/api/notes', (req, res) =>
 app.post('/api/notes', (req, res) => {
    const addNote = req.body;
    const noteList = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
-   const noteId = (noteList.length).toString();
+   const uniqueId = (noteList.length).toString();
 
-   addNote.id = noteId;
+   addNote.id = uniqueId;
 
    noteList.push(addNote);
 
    fs.writeFileSync('db/db.json', JSON.stringify(noteList));
    res.json(noteList);
+})
+
+app.delete('/api/notes/:id', (req, res) => {
+  let noteList = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
+  let noteID = req.params.id;
+  let newID = 0;
+
+  noteList = noteList.filter(thisNote => {
+    return thisNote.id != noteID;
+  })
+
+  for(thisNote of noteList) {
+    thisNote.id = newID.toString();
+    newID++;
+  }
+
+  fs.writeFileSync('db/db.json', JSON.stringify(noteList));
+  res.json(noteList);
 })
 
 // Listen on PORT 3001 and console log that its listening
