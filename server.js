@@ -19,21 +19,22 @@ app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
-app.get('/api/notes/:id', (req, res) =>
-  res.sendFile(path.join((__dirname, 'db/db.json'))
-  )
+app.get('/api/notes', (req, res) => 
+  res.sendFile(path.join(__dirname, 'db/db.json'))
 );
 
-app.get("/api/notes", (req, res) =>
-  res.json(
-    JSON.parse(fs.readFileSync("db/db.json", "utf-8"[Number(req.params.id)]))
-  )
-);
+app.post('/api/notes', (req, res) => {
+   const addNote = req.body;
+   const noteList = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
+   const noteId = (noteList.length).toString();
 
-app.post("/api/notes", (req, res) =>
-  JSON.parse(fs.readFile(path.join(__dirname, 'db/db.json'), "utf8",)
-  )
-);
+   addNote.id = noteId;
+
+   noteList.push(addNote);
+
+   fs.writeFileSync('db/db.json', JSON.stringify(noteList));
+   res.json(noteList);
+})
 
 // Listen on PORT 3001 and console log that its listening
 app.listen(PORT, () =>
