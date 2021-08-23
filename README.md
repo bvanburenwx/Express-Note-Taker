@@ -9,6 +9,7 @@ This is an application where a user can make reminder notes and save them to the
 ## Table of Contents:
 
 - [Installation](#installation)
+- [Technologies](#technologies)
 - [Usage](#usage)
 - [Contributions](#contributions)
 - [Testing](#testing)
@@ -21,6 +22,7 @@ This is an application where a user can make reminder notes and save them to the
 
 This project uses express so an "npm i" to install express from the dependencies in an integrated terminal will be needed. 
 
+---
 
 ## Technologies: 
 
@@ -62,7 +64,7 @@ There are no licenses for this project.
 ---
 
 ## Additional Info:
-- Github: [bvanburenwx](https://github.com/bvanburenwx/Express-Note-Taker)
+- Github: [bvanburenwx](https://github.com/bvanburenwx)
 - Email: bvanburenwx@gmail.com
 - Application Walkthrough: [Walkthrough](https://drive.google.com/file/d/1fwrjEsY3YGjq8e9RnnNptHWoKeJYv30_/view)
 - Deployed Application: [Heroku APP](https://bvanburen-express-note-taker.herokuapp.com/)
